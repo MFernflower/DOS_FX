@@ -43,7 +43,7 @@ shoot_delay:
 mov ax,0x0001
 int 33h
 ; end
-; never the same color routine - BX has sort-of-random-hex number in it - AX and DX is destroyed!!!!
+; never the same color routine - SEE NTSC.ASM FOR INFO!
 xor ah,ah
 int 1Ah
 xchg dx,bx	    
