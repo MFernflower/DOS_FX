@@ -1,13 +1,13 @@
 org 100h
-xor ax,ax  ; AH = 0x00
-mov al,0x03 ; AL = 0x03
-int 10h    ; set textmode we want 
+mov ah,0x00  ; AH = 0x00
+mov al,0x03  ; AL = 0x03
+int 10h      ; set textmode we want 
 mov ax,0B800h   ; segment of video buffer
 mov es,ax       ; put this into es
 xor di,di       ; clean up our mess but now ES:DI points to video memory
 xor ax,ax       ; Flush AX 
 mov al,0x20      
-mov cx,0xAE    ; when should we stop the counter?
+mov cx,0xAD    ; when should we stop the counter?
 cld
 printloop:
 inc ah 
