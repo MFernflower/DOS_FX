@@ -1,5 +1,5 @@
 org 100h
-xor ax,ax  ; AH = 0x00
+mov ah,0x00  ; AH = 0x00
 mov al,0x03 ; AL = 0x03
 int 10h    ; set textmode we want 
 mov ax,0B800h   ; segment of video buffer
@@ -27,5 +27,5 @@ xor ax,ax
 xor cx,cx 
 mov al,0x03
 int 10h ;restore text mode
-mov ax,0x4C  ; MSDOS quit and return 
+mov ah,0x4C  ; MSDOS quit and return 
 int 21h         
