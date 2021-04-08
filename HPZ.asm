@@ -25,8 +25,8 @@ mov ax,1301h
 mov bx,0008h ; last byte of BX seems to be text color?
 mov cx,003Ah
 mov dx,0A0Bh
-xor bp,bp
-add bp,text
+push bp
+mov bp,text
 int 10h
 mov cx,0x1C
 ; this code harvested from an old dos virus
@@ -71,6 +71,7 @@ mov al,0x02
 int 10h
 mov ax,0x0001
 int 33h
+pop bp
 mov ax,0x4C  ; MSDOS quit and return
 int 21h
 text db "HEAVY PETTING ZOO"
