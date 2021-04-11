@@ -38,12 +38,12 @@ shoot_delay:
 		pop	cx			; Restore the count
 		loop	new_shot		; Do another shot
 nop
-mov ax,1300h                   ; print string
-mov bx,8Ah                     ; attribute
-mov cx,25                    ; length of string
-mov dx,0xC02            ; start position
-mov bp,si                     ; fill bp with bullshit 
-int 10h
+mov ax,1300h                   ; print string call
+mov bx,8Ah                     ; attribute flag
+mov cx,18h                    ; length of string 
+mov dx,0xC00            ; start position
+mov bp,si                     ; fill string area with bullshit 
+int 10h ; do it
 xor ax,ax
 waitkb:                          
 mov ah,1h                       
