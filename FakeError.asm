@@ -1,9 +1,8 @@
 org 0x100
-xor ax,ax 
+xor ax,ax
+push bp 
 xor cx,cx
-push bp
-int 10h   
-; When ax and cx are blanked calling int 10 gets us a fucky video mode               
+int 10h   ; When ax and cx are blanked calling int 10 gets us a fucky video mode               
 mov cx,0x1C
 ; this code harvested from an old dos virus - makes a rat-a-tat sound on the PC speaker
 new_shot:  
@@ -40,8 +39,9 @@ shoot_delay:
 nop
 mov ax,1300h                   ; print string call
 mov bx,8Ah                     ; attribute flag
-mov cx,18h                    ; length of string 
-mov dx,0xC00            ; start position
+mov cx,19h                    ; length of string 
+xor dh,dh                       ; goddammit dosbox!
+mov dl,0xA5          ; start position
 mov bp,si                     ; fill string area with bullshit 
 int 10h ; do it
 xor ax,ax
