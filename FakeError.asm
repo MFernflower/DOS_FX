@@ -44,14 +44,17 @@ xor dh,dh                       ; goddammit dosbox!
 mov dl,0xA5          ; start position
 mov bp,si                     ; fill string area with bullshit 
 int 10h ; do it
+nop
+; Delay then return to dos routine 
+xor dx,dx
 xor ax,ax
-waitkb:                          
-mov ah,1h                       
-int 16h
-jz waitkb    
-jnz fall
-
-fall:
+int 1ah      ; get the time of day count
+add  dx,90   ; this is a okay delay fot what we are doing
+mov bx,dx    ; store end of delay value in bx
+again:                           
+int 1ah
+cmp dx,bx
+ jne again
 mov ah,0x4C  
 pop bp
 int 21h
