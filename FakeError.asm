@@ -49,7 +49,7 @@ nop
 xor dx,dx
 xor ax,ax
 int 1ah      ; get the time of day count
-add  dx,90   ; this is a okay delay fot what we are doing
+add  dx,111   ; this is a okay delay for what we are doing
 mov bx,dx    ; store end of delay value in bx
 again:                           
 int 1ah
