@@ -1,9 +1,19 @@
 use16
 org 0x100
-mov ah, 0x00
+xor ax,ax
 mov al, 0x03  ; text mode 80x25 16 colours
 int 0x10
-xor ax,ax
+mov ax,532 
+mov cx, ax			
+mov al, 182
+out 43h, al
+mov ax, cx			
+out 42h, al
+mov al, ah
+out 42h, al
+in al, 61h			; Switch PC speaker on and annoy user untill reboot
+or al, 03h
+out 61h, al
 jmp writeimage
 
 
@@ -109,7 +119,8 @@ StartOutput:
        DEC     CX                      ;Adjust main counter.
        LOOPNZ  LOOPA                   ;Loop if anything else to do...
 
-Done:  POP     DX                      ;Restore registers.
+Done:  
+       POP     DX                      ;Restore registers.
        POP     CX
        POP     BX
        POP     AX
