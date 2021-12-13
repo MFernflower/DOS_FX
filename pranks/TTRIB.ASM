@@ -22,32 +22,6 @@ jmp hang
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 writeimage:
        MOV     SI,PAYLOAD
        MOV     AX,0B800h
