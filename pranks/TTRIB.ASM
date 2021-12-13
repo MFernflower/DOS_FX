@@ -1,7 +1,6 @@
 use16
 org 0x100
-xor ax,ax
-mov al, 0x03  ; text mode 80x25 16 colours
+mov ax, 0x0003  ; text mode 80x25 16 colours
 int 0x10
 mov ax,532 
 mov cx, ax			
@@ -14,6 +13,12 @@ out 42h, al
 in al, 61h			; Switch PC speaker on and annoy user 
 or al, 03h
 out 61h, al
+MOV SI,PAYLOAD
+MOV AX,0B800h
+MOV ES,AX
+;MOV DI,1*2 + 1*160-162 
+XOR DI,DI ; Start at zero to write image to video memory
+MOV CX,0x0902 ; LENGTH OF PAYLOAD IMAGE
 call writeimage 
 hang: 
 nop
@@ -23,11 +28,6 @@ jmp hang
 
 
 writeimage:
-       MOV     SI,PAYLOAD
-       MOV     AX,0B800h
-       MOV ES,AX
-       MOV     DI,1*2 + 1*160-162 
-       MOV     CX,0x0902
        PUSH    SI                      ;Save registers.
        PUSH    DI
        PUSH    AX
