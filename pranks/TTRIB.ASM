@@ -2,7 +2,7 @@ use16
 org 0x100
 mov ax, 0x0003  ; text mode 80x25 16 colours
 int 0x10
-mov ax,532 
+mov ax,0x21A
 mov cx, ax			
 mov al, 182
 out 43h, al
