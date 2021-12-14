@@ -18,7 +18,7 @@ MOV AX,0B800h
 MOV ES,AX
 NOP 
 XOR DI,DI ; Start at zero to write image to video memory
-MOV CX,0x0959 ; LENGTH OF PAYLOAD IMAGE
+MOV CX,0x03BF ; LENGTH OF PAYLOAD IMAGE
 call writeimage 
 hang: 
 nop
