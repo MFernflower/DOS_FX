@@ -2,23 +2,24 @@ use16
 org 0x100
 mov ax, 0x0003  ; text mode 80x25 16 colours
 int 0x10
+; Switch PC speaker on and annoy user 
 mov ax,0x21E0
-mov cx, ax			
-mov al, 182
-out 43h, al
-mov ax, cx			
-out 42h, al
-mov al, ah
-out 42h, al
-in al, 61h			; Switch PC speaker on and annoy user 
-or al, 03h
-out 61h, al
-MOV SI,PAYLOAD
-MOV AX,0B800h
-MOV ES,AX
-NOP 
-XOR DI,DI ; Start at zero to write image to video memory
-MOV CX,0x03BF ; LENGTH OF PAYLOAD IMAGE
+mov cx,ax			
+mov al,182
+out 43h,al
+mov ax,cx			
+out 42h,al
+mov al,ah
+out 42h,al
+in al,61h			
+or al,03h
+out 61h,al
+; end
+mov si,PAYLOAD
+mov ax,0B800h
+mov es,ax
+xor di,di ; DI holds some screen location thing - since we want the center of the screen - zero it out
+mov cx,0x03BF ; LENGTH OF PAYLOAD IMAGE
 call writeimage 
 hang: 
 nop
@@ -45,7 +46,7 @@ LOOPA: LODSB                           ;Get next character.
        JC      ForeGround
        STOSW                           ;Save letter on screen.
 Next:  LOOP    LOOPA
-       JMP     Short Done
+       JMP     Done
 
 ForeGround:
        CMP     AL,16                   ;If less than 16, then change the
