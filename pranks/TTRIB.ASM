@@ -1,7 +1,8 @@
 use16
 org 0x100
-mov ax,0x0003  ; text mode 80x25 16 colours
-int 0x10
+mov ax,0x0003  ; clear screen and set it to text mode 80x25 16 colours
+int 0x10 
+; All of this is just to jam the PC speaker on playing a nasty single tone
 mov ax,0x21E0
 mov cx,ax			
 mov al,182
@@ -10,17 +11,19 @@ mov ax,cx
 out 42h,al
 mov al,ah
 out 42h,al
-in al,61h			; Switch PC speaker on and annoy user 
+in al,61h			
 or al,03h
 out 61h,al
-mov si,PAYLOAD
-mov ax,0B800h
-MOV es,ax
-nop
+; end 
+mov si,PAYLOAD ; load image into si
+mov ax,0B800h ; get into text mode VMEM
+mov es,ax ; actually do it
 xor di,di ; Start at zero to write image to video memory
 mov cx,0x03BF ; LENGTH OF PAYLOAD IMAGE
-call writeimage 
+call writeimage ; image to actual screen 
 hang: 
+nop
+nop
 nop
 nop
 jmp hang
