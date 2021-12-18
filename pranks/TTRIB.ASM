@@ -24,11 +24,13 @@ call writeimage
 hang: 
 nop
 nop
+nop
+nop
 jmp hang
 
 
 
-writeimage:
+writeimage:                            ; this function was created by one Ian E. Davis -- I only changed like 4 lines to get it to compile with FASM
        PUSH    SI                      ;Save registers.
        PUSH    DI
        PUSH    AX
@@ -46,7 +48,7 @@ LOOPA: LODSB                           ;Get next character.
        JC      ForeGround
        STOSW                           ;Save letter on screen.
 Next:  LOOP    LOOPA
-       JMP     Done
+       JMP     Done                    ; may need to be marked as short for some --- FASM did not care 
 
 ForeGround:
        CMP     AL,16                   ;If less than 16, then change the
