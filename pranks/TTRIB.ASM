@@ -96,8 +96,7 @@ StartOutput:
        LOOPNZ  LOOPA                   ;Loop if anything else to do...
 
 Done:  
-       POPA 
-	   NOP
+       POPA
        RET
 
 
