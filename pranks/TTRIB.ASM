@@ -25,18 +25,13 @@ hang:
 nop
 nop
 nop
-nop
 jmp hang
 
 
 
 writeimage:                            ; this function was created by one Ian E. Davis -- I only changed like 4 lines to get it to compile with FASM
-       PUSH    SI                      ;Save registers.
-       PUSH    DI
-       PUSH    AX
-       PUSH    BX
-       PUSH    CX
-       PUSH    DX
+       PUSHA                           ;Save registers.
+ 
        JCXZ    Done
 
        MOV     DX,DI                   ;Save X coordinate for later.
@@ -101,12 +96,8 @@ StartOutput:
        LOOPNZ  LOOPA                   ;Loop if anything else to do...
 
 Done:  
-       POP     DX                      ;Restore registers.
-       POP     CX
-       POP     BX
-       POP     AX
-       POP     DI
-       POP     SI
+       POPA 
+	   NOP
        RET
 
 
