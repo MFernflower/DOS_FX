@@ -30,9 +30,9 @@ jmp hang
 
 writeimage:                            ; this function was created by one Ian E. Davis -- I only changed like 4 lines to get it to compile with FASM
        PUSHA                           ; Save registers (186 and onward cpu's)
-	   XOR     DX,DX                    ; this holds some screen location thing - since we want the center of the screen - zero it out
-	   JCXZ    Done
-       XOR     AX,AX                   ;Set Current attributes.
+	   XOR DX,DX                       ; DX holds some screen location thing - since we want the center of the screen - zero it out
+	   JCXZ Done
+       XOR AX,AX                       ; zero out AX too!
        CLD
 
 LOOPA: LODSB                           ;Get next character.
