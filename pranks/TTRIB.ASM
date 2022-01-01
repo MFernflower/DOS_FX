@@ -18,7 +18,6 @@ out 61h,al
 mov si,PAYLOAD
 mov ax,0B800h
 mov es,ax
-xor di,di ; DI holds some screen location thing - since we want the center of the screen - zero it out
 mov cx,0x03BF ; LENGTH OF PAYLOAD IMAGE
 call writeimage 
 hang: 
@@ -30,11 +29,9 @@ jmp hang
 
 
 writeimage:                            ; this function was created by one Ian E. Davis -- I only changed like 4 lines to get it to compile with FASM
-       PUSHA                           ;Save registers.
- 
-       JCXZ    Done
-
-       MOV     DX,DI                   ;Save X coordinate for later.
+       PUSHA                           ; Save registers (186 and onward cpu's)
+	   XOR     DX,DX                    ; this holds some screen location thing - since we want the center of the screen - zero it out
+	   JCXZ    Done
        XOR     AX,AX                   ;Set Current attributes.
        CLD
 
