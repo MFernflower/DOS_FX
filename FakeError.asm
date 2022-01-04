@@ -1,4 +1,4 @@
-org 0x100
+org 0x100 ; I really need to clean this one up 
 xor ax,ax
 push bp 
 xor cx,cx
@@ -36,7 +36,7 @@ shoot_delay:
 		jne   	shoot_delay		; If not, keep checking
 		pop	cx			; Restore the count
 		loop	new_shot		; Do another shot
-nop
+
 mov ax,1300h                   ; print string call
 mov bx,8Ah                     ; attribute flag
 mov cx,19h                    ; length of string 
