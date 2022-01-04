@@ -18,9 +18,7 @@ cmp dx,bx
 jne wait1
 mov cx,0x8B1 ; refresh CX
 and si,ax ; mess with image data
-call writeimage ; display it
-ret
-
+jmp writeimage ; display it and return to dos
 
 
 writeimage:                            ; this function was created by one Ian E. Davis -- I only changed like 4 lines to get it to compile with FASM
