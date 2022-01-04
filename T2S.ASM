@@ -10,14 +10,14 @@ call writeimage
 xor dx,dx
 xor ax,ax
 int 1ah      ; get the time of day count
-add dx,100   ; this is a okay delay for what we are doing
-mov bx,dx    ; store end of delay value in bx
+add dx,100   ; this is a okay delay for what we are doing (bios_time added to delay_value)
+mov bx,dx    ; save output of this in bx
 wait1:                           
 int 1ah
-cmp dx,bx
-jne wait1
+cmp dx,bx ; compare current bios time to data in bx
+jne wait1 
 mov cx,0x8B1 ; refresh CX
-and si,ax ; mess with image data
+and si,0xF00D; mess with image data - SI does not need refreshing
 jmp writeimage ; display it and return to dos
 
 
@@ -141,7 +141,7 @@ PAYLOAD:
         DB      3,'ß',9,27,16,26,0,15,19,25,8,17,'Ü',5,16,'ß  ',1,27,19
         DB      26,3,'Û',15,27,23,'ß',17,' ',2,22,'ß',1,27,19,26,3,'Û'
         DB      13,17,'ßß ',5,27,16,'ß',4,'ß',12,'ß',25,5,14,'TITANI'
-        DB      'UM 2 STEP - (C) 2021',13,27,17,'ß',24,27,21,'Ü',4,'ß'
+        DB      'UM 2 STEP - (C) 2022',13,27,17,'ß',24,27,21,'Ü',4,'ß'
         DB      12,16,'ß',3,'Ä',1,18,'ß',9,17,'ßÜ',5,'ß',13,21,'ßÜ',4
         DB      'ß',12,20,'ß',1,27,'Ü',7,27,'ß',10,18,'ßÜ',1,'ß',16,'Ü'
         DB      9,'ÒÒ',1,27,19,'Ü',26,3,'Û',17,' ',14,27,22,'ßÜ',2,'ß'
