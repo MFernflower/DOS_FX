@@ -1,31 +1,43 @@
 use16
 org 0x100
-mov ax, 0x0003  ; text mode 80x25 16 colours
+mov ax,0x0003  ; text mode 80x25 16 colours
 int 0x10
+
 mov si,PAYLOAD
 mov ax,0B800h
 mov es,ax
 mov cx,0x8B1; LENGTH OF PAYLOAD IMAGE
 call writeimage 
+
+xor ax,ax
+
+key_loop:
+mov ah,0x01 ; Check if key touched
+int 16h   ; Check if key touched
+jz key_loop  ; if not we start allover again
+
+mov ax,0x0600
+mov cx,0x0101
+mov dx,0x2378	
+int 0x10
+
 xor dx,dx
 xor ax,ax
 int 1ah      ; get the time of day count
-add dx,100   ; this is a okay delay for what we are doing (bios_time added to delay_value)
+add dx,80  ; this is a okay delay for what we are doing (bios_time added to delay_value)
 mov bx,dx    ; save output of this in bx
 wait1:                           
 int 1ah
 cmp dx,bx ; compare current bios time to data in bx
-jne wait1 
-mov cx,0x8B1 ; refresh CX
-and si,0xF00D; mess with image data - SI does not need refreshing
-jmp writeimage ; display it and return to dos
-
+jne wait1
+;je Done
+ret
 
 writeimage:                            ; this function was created by one Ian E. Davis -- I only changed like 4 lines to get it to compile with FASM
        PUSHA                           ; Save registers (186 and onward cpu's)
-	   XOR DX,DX                       ; DX holds some screen location thing - since we want the center of the screen - zero it out
-	   JCXZ Done
-       XOR AX,AX                       ; zero out AX too!
+	   XOR DX,DX                       ; We want the center of the screen - so blank DX
+	   JCXZ Done                       ; if CX is zero we RET
+       XOR AX,AX                       ; also blank AX
        CLD
 
 LOOPA: LODSB                           ;Get next character.
