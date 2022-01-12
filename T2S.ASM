@@ -30,8 +30,9 @@ wait1:
 int 1ah
 cmp dx,bx ; compare current bios time to data in bx
 jne wait1
-;je Done
-ret
+
+mov cx,0x8B1
+jmp writeimage
 
 writeimage:                            ; this function was created by one Ian E. Davis -- I only changed like 4 lines to get it to compile with FASM
        PUSHA                           ; Save registers (186 and onward cpu's)
