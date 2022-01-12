@@ -1,38 +1,38 @@
-use16
-org 0x100
-mov ax,0x0003  ; text mode 80x25 16 colours
-int 0x10
+USE16
+ORG 0x100
+MOV AX,0x0003  ; TEXT MODE 80X25 16 COLOURS
+INT 0x10
+MOV SI,PAYLOAD
+MOV AX,0B800H
+MOV ES,AX
+MOV CX,0x8B1 ; LENGTH OF PAYLOAD IMAGE
+CALL writeimage
 
-mov si,PAYLOAD
-mov ax,0B800h
-mov es,ax
-mov cx,0x8B1; LENGTH OF PAYLOAD IMAGE
-call writeimage 
+XOR AX,AX
 
-xor ax,ax
+KEY_LOOP_WAIT:
+MOV AH,0x01 ; CHECK IF KEY TOUCHED
+INT 0x16   ; CHECK IF KEY TOUCHED
+JZ KEY_LOOP_WAIT ; IF NOT WE "DO IT ALL OVER AGAIN"
+MOV AX,0x0600 ; A BUNCH OF SETUP
+MOV CX,0x0101 ; AND MORE
+MOV DX,0x2378	; AND YET EVEN MORE
+INT 0x10 ; FUCK THE IMAGE ON THE SCREEN
 
-key_loop:
-mov ah,0x01 ; Check if key touched
-int 16h   ; Check if key touched
-jz key_loop  ; if not we start allover again
+XOR DX,DX
+XOR AX,AX
+INT 1AH      ; GET THE TIME OF DAY COUNT
+ADD DX,80  ; THIS IS A OKAY DELAY FOR WHAT WE ARE DOING (BIOS_TIME ADDED TO DELAY_VALUE)
+MOV BX,DX    ; SAVE OUTPUT OF THIS IN BX
+WAIT1:                           
+INT 1AH
+CMP DX,BX ; COMPARE CURRENT BIOS TIME TO DATA IN BX
+JNE WAIT1
 
-mov ax,0x0600
-mov cx,0x0101
-mov dx,0x2378	
-int 0x10
+NOP
 
-xor dx,dx
-xor ax,ax
-int 1ah      ; get the time of day count
-add dx,80  ; this is a okay delay for what we are doing (bios_time added to delay_value)
-mov bx,dx    ; save output of this in bx
-wait1:                           
-int 1ah
-cmp dx,bx ; compare current bios time to data in bx
-jne wait1
-
-mov cx,0x8B1
-jmp writeimage
+MOV CX,0x8B1 ; refresh CX with payload size
+JMP writeimage ; redraw orginal image and exit to dos
 
 writeimage:                            ; this function was created by one Ian E. Davis -- I only changed like 4 lines to get it to compile with FASM
        PUSHA                           ; Save registers (186 and onward cpu's)
