@@ -1,8 +1,8 @@
-org 0x100 ; I really need to clean this one up 
-xor ax,ax
-push bp 
-xor cx,cx
-int 10h   ; When ax and cx are blanked calling int 10 gets us a fucky video mode               
+USE16
+ORG 0x100
+XOR AX,AX
+XOR CX,CX
+INT 0x10    
 mov cx,0x1C
 ; this code harvested from an old dos virus - makes a rat-a-tat sound on the PC speaker
 new_shot:  
@@ -38,15 +38,23 @@ shoot_delay:
 		loop	new_shot		; Do another shot
 
 mov ax,1300h                   ; print string call
-mov bx,8Ah                     ; attribute flag
+mov bx,0xFA                     ; attribute flag
 mov cx,19h                    ; length of string 
 xor dh,dh                       ; goddammit dosbox!
 mov dl,0xA5          ; start position
 mov bp,si                     ; fill string area with bullshit 
-int 10h ; do it
+int 0x10
+mov dl,0xF2          ; start position
+int 0x10
+mov dl,0x77
+mov bx,cx
+int 0x10
+and bp,cx
+mov dl,0x64
+int 0x10
 nop
-; Delay then return to dos routine 
-xor dx,dx
+nop
+; Delay then return to dos
 xor ax,ax
 int 1ah      ; get the time of day count
 add  dx,111   ; this is a okay delay for what we are doing
@@ -55,7 +63,4 @@ again:
 int 1ah
 cmp dx,bx
  jne again
-mov ah,0x4C  
-pop bp
-int 21h
-
+ret
