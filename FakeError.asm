@@ -41,18 +41,11 @@ mov ax,1300h                   ; print string call
 mov bx,0xFA                     ; attribute flag
 mov cx,19h                    ; length of string 
 xor dh,dh                       ; goddammit dosbox!
-mov dl,0xA5          ; start position
+mov dl,0x85          ; start position
 mov bp,si                     ; fill string area with bullshit 
 int 0x10
-mov dl,0xF2          ; start position
+mov dl,0x30        ; start position
 int 0x10
-mov dl,0x77
-mov bx,cx
-int 0x10
-and bp,cx
-mov dl,0x64
-int 0x10
-nop
 nop
 ; Delay then return to dos
 xor ax,ax
