@@ -1,6 +1,7 @@
 ; HEAVY PETTING ZOO - inspired by the deadmau5 song 
 ; most of this code is based on demo code written by Hackman
 ; TODO: Make this code pretty - it looks like hell but FASM compiles it fine!
+use16
 org 100h
 xor ax,ax 
 mov al,0x13
