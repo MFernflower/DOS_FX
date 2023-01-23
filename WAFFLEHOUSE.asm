@@ -1,5 +1,6 @@
-org 100h ;Tell FASM this is a DOS com file
-bloop:   ; We fall down into the loop
+use16
+org 100h 
+bloop:  
 xor ax,ax
 mov ah,06
 xor cx,cx
@@ -12,7 +13,6 @@ int 21h
 mov ah,0x01 ; Check if key touched
 int 16h   ; Check if key touched
 jz bloop  ; if not we start allover again
-xor ax,ax
 mov al,0x03
 int 10h
 mov ah,0x4c
