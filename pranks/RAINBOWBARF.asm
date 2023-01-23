@@ -1,5 +1,6 @@
 ; Rainbow Barf dos prank program (Will hang your system when ran)
-ORG 100h
+use16
+org 100h
 xor ax,ax
 mov al,0x03
 int 10h
