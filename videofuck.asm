@@ -1,4 +1,4 @@
-; This works on DOSBOX - freedos untested -  also untested on vintage HW 
+use16
 org 100h
 xor ax,ax 
 xor cx,cx
