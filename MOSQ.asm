@@ -1,4 +1,5 @@
 ; setup block
+use16
 org 100h
 xor ah,ah
 mov al,02h
@@ -38,12 +39,7 @@ shoot_delay:
 		loop	new_shot		; Do another shot
 		; end sound block
 		
-; random colored text, mouse annoyance and exit to dos
-; mouse annoyance
-mov ax,0x0001
-int 33h
-; end
-; never the same color routine - SEE NTSC.ASM FOR INFO!
+; never the same color routine 
 xor ah,ah
 int 1Ah
 xchg dx,bx	    
