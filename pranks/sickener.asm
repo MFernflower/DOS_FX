@@ -1,3 +1,4 @@
+use16
 org 100h
 mov ax,0x0000
 mov al,0x13
@@ -16,9 +17,8 @@ or al,0x3
 out 0x61,al
 xor bx,bx
 xor ax,ax
-nop
 vgafuck: 
 mov [bx],ax
 inc bx
 inc ax
-jmp vgafuck ; dosbox hates JNO for some reason
+jmp vgafuck 
