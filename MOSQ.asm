@@ -1,14 +1,11 @@
 ; setup block
 use16
 org 100h
-xor ah,ah
-mov al,02h
-int 10h
 mov cx,4h
 ; end
 ; this code block harvested from an old dos virus
 new_shot:  
-        push	cx			; Save the current count
+                push	cx			; Save the current count
 		mov 	dx,0x00BE		; DX holds pitch
 		mov   	bx,0xCCFB	        ; BX holds shot duration
 		in    	al,061h			; Read the speaker port
@@ -33,11 +30,11 @@ shoot_pause:
 		add   	bx,dx                   ; Add current time to delay
 shoot_delay:  
         int 1Ah			; Get the time again
-		cmp   	dx,bx			; Are we done yet?
-		jne   	shoot_delay		; If not, keep checking
-		pop	cx			; Restore the count
-		loop	new_shot		; Do another shot
-		; end sound block
+	cmp   	dx,bx			; Are we done yet?
+	jne   	shoot_delay		; If not, keep checking
+	pop	cx			; Restore the count
+	loop	new_shot		; Do another shot
+	; end sound block
 		
 ; never the same color routine 
 xor ah,ah
@@ -56,8 +53,5 @@ int 10h
 mov dx,text
 mov ah,0x09
 int 21h
-mov ah,0x4C  ; MSDOS quit and return
-int 21h
-; end
+ret
 text db "Fuck, man! Shit! Mosquitoes!",0x24
-; EOF
