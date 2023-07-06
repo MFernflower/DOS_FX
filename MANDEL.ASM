@@ -66,7 +66,7 @@
         int     21h
 	xor	ax,ax
 	int	16h
-	mov	ax,3
+	mov	al,3
 	int	10h
 	ret
 
