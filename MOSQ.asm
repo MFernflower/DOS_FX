@@ -1,7 +1,7 @@
 ; setup block
 use16
 org 100h
-mov cx,4h
+mov cx,0x05
 ; end
 ; this code block harvested from an old dos virus
 new_shot:  
@@ -37,21 +37,19 @@ shoot_delay:
 	; end sound block
 		
 ; never the same color routine 
-xor ah,ah
+xor ax,ax
 int 1Ah
 xchg dx,bx	    
-xor al,al  
-xor dx,dx
-; end
-; set color
 mov ah,0x06 ; ah to 6h
 xor cx,cx  ; cx to zero
 mov dx,0x184f
 int 10h
 ; end
+
 ; print and exit
 mov dx,text
 mov ah,0x09
 int 21h
 ret
 text db "Fuck, man! Shit! Mosquitoes!",0x24
+; EOF
