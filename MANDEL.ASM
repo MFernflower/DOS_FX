@@ -66,8 +66,7 @@
         int     21h
 	xor	ax,ax
 	int	16h
-	mov	al,3
-	int	10h
+        nop
 	ret
 
 x_left dd -2.2
