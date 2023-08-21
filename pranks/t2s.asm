@@ -12,8 +12,7 @@ add di,0x051d
 cmp di,0x3e80
 jl partb
 sub di,0x3e80
-;and di,0x012a
-xor di,0x011F
+xor di,0x011A
 partb:
 mov al,[es:di]
 add ax,di
