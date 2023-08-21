@@ -1,6 +1,5 @@
 org 100h
-mov ah,0x00  ; AH = 0x00
-mov al,0x03  ; AL = 0x03
+mov ax,0x0003
 int 10h      ; set textmode we want 
 mov ax,0B800h   ; segment of video buffer
 mov es,ax       ; put this into es
