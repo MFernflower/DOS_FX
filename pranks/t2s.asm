@@ -8,11 +8,12 @@ int 21h
 mov ax,0xb800
 mov es,ax
 parta:
-add di,0x51d
+add di,0x051d
 cmp di,0x3e80
 jl partb
 sub di,0x3e80
-and di,0x012a
+;and di,0x012a
+xor di,0x011F
 partb:
 mov al,[es:di]
 add ax,di
