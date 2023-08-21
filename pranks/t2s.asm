@@ -3,7 +3,7 @@
 use16
 org 100h  
 mov dx,battles
-mov ah,0x09
+mov ax,0x0900
 int 21h
 mov ax,0xb800
 mov es,ax
