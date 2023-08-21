@@ -1,5 +1,5 @@
 ; Dedicated to a very MSDOS virus payload inspired music video - Titanium 2 step by Battles
-; hangs machine but should not/does not damage anythig 
+; hangs machine but should not/does not damage os install or files
 use16
 org 100h  
 mov dx,battles
