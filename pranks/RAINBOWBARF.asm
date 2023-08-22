@@ -6,8 +6,8 @@ mov al,0x03
 int 10h
 mov ax,0B800h  
 mov es,ax            
-xor di,di       
-xor ax,ax       
+;xor di,di       
+;xor ax,ax       
 mov al,0x1A      
 mov cx,0xFA  
 cld
