@@ -9,5 +9,5 @@ for f in ./*.asm
 do
   echo -e "\e[36mProcessing $f file...\e[0m"
   fasm $f
-  echo -e '\007'
 done
+echo -e '\007'
