@@ -19,6 +19,5 @@ int 0x10
 mov dx,text
 mov ah,0x09
 int 0x21
-mov ah,0x20
-int 0x21
+ret
 text db "Juice B Crypts",0x24
