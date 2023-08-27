@@ -1,8 +1,8 @@
 ; 13hfuck.asm - interesting video effect caused by quickly calling int 21h ah 9 while in mode 13h (this effect works in DOSBOX but is untested in anything else)
-org 100h ; tell FASM this is a com file
-xor ax,ax  ;clear AX
-mov al,0x13 ;AL now set to 0x13
-int 10h  ;now we enter 13h video mode
+use16
+org 100h      
+mov ax,0x0013 ; mode 13
+int 0x10      ; let's go
 ;----------
 ; MAIN LOOP
 mloop:
