@@ -1,11 +1,6 @@
-
-; Mandelbrot Set - fasm example program
-; tweaked by mfernflower 
-; requires FPU
-
         use16
 	org 0x100
-	mov	ax,13h
+	mov	ax,0x0013
 	int	10h
 	push	0A000h
 	pop	es
@@ -66,7 +61,6 @@
         int     21h
 	xor	ax,ax
 	int	16h
-        nop
 	ret
 
 x_left dd -2.2
