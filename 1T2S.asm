@@ -20,20 +20,12 @@ mov [es:di],al
 mov ah,0x01 ; Check if key touched
 int 0x16   ; Check if key touched
 jz parta  ; if not we start allover again
-xor ax,ax ; clear AX
-int 0x10 ; clear screen
+mov ax,0x0003 ; reset screen
+int 0x10 ; reset screen
 mov dx,t2step
 mov ax,0x0900
 int 0x21
 ret      
-nop
-nop
-nop
-nop
+padding: times 5 db 0x90
 battles db "It's taking too long to figure it out!$"
-nop
-nop
-nop
-nop
-t2step db "Alright already, alright already!$"
-nop ; 140 byte com file total
+t2step db "Alright already!$"
