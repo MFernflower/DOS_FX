@@ -4,7 +4,9 @@ use16
 org 100h
 mov ax,0x0013
 int 10h ; to mode 13 we go!
-les si,[bx] ; lets write to video mem
+MOV AX,0x0A000
+MOV DS,AX
+MOV ES,AX
 xor bx,bx
 xor ax,ax 
 MAINLOOP:
