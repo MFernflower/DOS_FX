@@ -6,7 +6,6 @@ mov ax,0x0013
 int 10h ; to mode 13 we go!
 MOV AX,0x0A000
 MOV DS,AX
-MOV ES,AX
 xor bx,bx
 xor ax,ax 
 MAINLOOP:
