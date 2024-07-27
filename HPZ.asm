@@ -3,15 +3,13 @@
 ; TODO: Make this code pretty - it looks like hell but FASM compiles it fine!
 use16
 org 100h
-xor ax,ax 
-mov al,0x13
+mov ax,0x0013
 int 10h ; to mode 13 we go!
 mov ax,0a000h 
 mov ds,ax
 xor bx,bx
 xor ax,ax 
 MAINLOOP:
-nop
 mov [bx],ax
 add bx,320
 mov [bx],ax
@@ -26,8 +24,6 @@ mov ax,1301h
 mov bx,0008h ; last byte of BX seems to be text color?
 mov cx,003Ah
 mov dx,0A0Bh
-xor bp,bp
-mov bp,text
 int 10h
 mov cx,0x1C
 ; this code harvested from an old dos virus
@@ -67,12 +63,6 @@ keycheck:
 mov ah,1h ; Check if key touched
 int 16h   ; Check if key touched
 jz keycheck
-xor ax,ax
 mov al,0x02
 int 10h
-mov ax,0x0001
-int 33h
-xor bp,bp
-mov ax,0x4C  ; MSDOS quit and return
-int 21h
-text db "HEAVY PETTING ZOO"
+ret
