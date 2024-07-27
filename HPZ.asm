@@ -4,8 +4,7 @@ use16
 org 100h
 mov ax,0x0013
 int 10h ; to mode 13 we go!
-mov ax,0a000h 
-mov ds,ax
+les si,[bx] ; lets write to video mem
 xor bx,bx
 xor ax,ax 
 MAINLOOP:
@@ -20,7 +19,7 @@ inc ax
 cmp ax,0x0FF
 jng MAINLOOP
 mov ax,1301h
-mov bx,0008h ; last byte of BX seems to be text color?
+mov bx,000Bh ; last byte of BX seems to be text color?
 mov cx,003Ah
 mov dx,0A0Bh
 int 10h
@@ -62,6 +61,4 @@ keycheck:
 mov ah,1h ; Check if key touched
 int 16h   ; Check if key touched
 jz keycheck
-mov al,0x02
-int 10h
 ret
