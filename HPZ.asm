@@ -1,6 +1,5 @@
 ; HEAVY PETTING ZOO - inspired by the deadmau5 song 
 ; most of this code is based on demo code written by Hackman
-; TODO: Make this code pretty - it looks like hell but FASM compiles it fine!
 use16
 org 100h
 mov ax,0x0013
@@ -24,7 +23,7 @@ mov ax,1301h
 mov bx,0008h ; last byte of BX seems to be text color?
 mov cx,003Ah
 mov dx,0A0Bh
-; mov bp,dx
+mov si,bp ; random crap to show on screen 
 int 10h
 mov cx,0x1C
 ; this code harvested from an old dos virus
