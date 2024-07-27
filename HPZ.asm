@@ -23,7 +23,6 @@ mov ax,1301h
 mov bx,0008h ; last byte of BX seems to be text color?
 mov cx,003Ah
 mov dx,0A0Bh
-mov si,bp ; random crap to show on screen 
 int 10h
 mov cx,0x1C
 ; this code harvested from an old dos virus
