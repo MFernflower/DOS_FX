@@ -1,12 +1,12 @@
 ; setup block
 use16
 org 100h
-mov cx,0x05
+mov cx,0x0004
 ; end
 ; this code block harvested from an old dos virus
 new_shot:  
                 push	cx			; Save the current count
-		mov 	dx,0x00BE		; DX holds pitch
+		mov 	dx,0x0BBE		; DX holds pitch
 		mov   	bx,0xCCFB	        ; BX holds shot duration
 		in    	al,061h			; Read the speaker port
 		and   	al,11111100b		; Turn off the speaker bit
@@ -37,6 +37,8 @@ shoot_delay:
 	; end sound block
 		
 ; never the same color routine 
+mov ax,0x0003 ; RESET VIDEO MODE 
+int 0x10 ; RESET VIDEO MODE
 xor ax,ax
 int 1Ah
 xchg dx,bx	    
