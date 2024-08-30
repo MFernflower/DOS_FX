@@ -1,8 +1,8 @@
 use16
 org 0x100 
-mov ax,$0013
+mov ax,0x0013
 int 0x10
-push $A000
+push word 0xa000
 pop es
 xor di,di
 juiceb:
