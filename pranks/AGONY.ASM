@@ -18,7 +18,4 @@ cld
 printloop:
 inc ah 
 stosw  
-jno printloop 
-hang:
-nop
-jmp hang
+jmp printloop
