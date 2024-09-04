@@ -8,3 +8,8 @@ for f in ./*.asm
 do
 fasm $f
 done
+
+for p in ./*.ASM
+do
+fasm $p
+done
