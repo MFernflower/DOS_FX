@@ -5,8 +5,9 @@ org 0x100
 mov dx,battles
 mov ax,0x0900
 int 0x21
-mov ax,0xb800
-mov es,ax
+push word 0x0B800  
+pop es           
+xor di,di 
 parta:
 add di,0x051d
 cmp di,0x3e80
