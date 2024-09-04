@@ -9,3 +9,7 @@ do
 fasm $f
 done
 
+for p in ./*.ASM
+do
+fasm $p
+done
