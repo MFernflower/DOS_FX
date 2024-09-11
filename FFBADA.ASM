@@ -13,6 +13,6 @@ keyExit:
 mov ah,0x01 ; Check if key touched
 int 0x16   ; Check if key touched
 jz keyExit  ; if not we start allover again
-mov al,0x03 ; clear screen
+mov AX,0x0002 ; clear screen
 int 0x10 ; clear screen
 ret
