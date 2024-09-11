@@ -6,6 +6,5 @@ All of the programs outside the prank folder are completely benign - the ones in
 
 You will need FASM to build them
 
-They work fine in dosbox if you do not have a acutal MSDOS machine 
-
+They work fine and were devloped in a simulated "semi-modern" dos machine (A 86_BOX emulating a 4MB 386 with FPU and XTIDE card running a virtual freedos cf-card image) 
 
