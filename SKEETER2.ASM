@@ -4,7 +4,7 @@ format MZ
 push cs
 pop ds
 ; end
-; a subroutine I stole from an old dos virus and tweaked
+; a subroutine I stole from an old dos virus and tweaked so that it makes an annoying noise on the bios beeper
 mov cx,0x0004
 new_shot:
 push cx
