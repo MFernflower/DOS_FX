@@ -8,8 +8,8 @@ pop ds
 mov cx,0x0004
 new_shot:
 push cx
-mov dx,0xFFFF
-mov bx,0x22FB
+mov dx,0xF6D8 
+mov bx,0xC2FB        
 in al,061h
 and al,11111100b
 fire_shot:
@@ -52,5 +52,4 @@ mov ah,0x09
 int 0x21
 mov ax,0x4C00
 int 0x21
-; end
 text db 'Fuck, man! Shit! Mosquitoes!',0x24
