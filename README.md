@@ -6,7 +6,9 @@ All of the programs outside the prank folder are completely benign - the ones in
 
 You will need FASM to build them
 
-Some code in places is quite messy but everything does indeed work - expect changes to code semi frequently as I learn more and more about intel 80386 and FREEDOS devlopment! 
+Some code in places is quite messy but everything does work! 
+
+Expect changes to code as I learn more and more about intel 80386 and FREEDOS devlopment! 
 
 They work fine and were devloped in a simulated "semi-modern" dos machine (A 86_BOX emulating a 4MB 386 with FPU and XTIDE card running a virtual freedos cf-card image) 
 
