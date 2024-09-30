@@ -10,6 +10,6 @@ do
 fasm $p
 done
 
-mkdir ./bin_out
+mkdir ./bin_out 
 
-mv ./*.{exe,com} ./bin_out
+mv ./*.{exe,com,COM,EXE} ./bin_out
