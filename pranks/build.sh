@@ -1,8 +1,4 @@
 #!/bin/bash
-for k in ./*.com
-do
-rm $k
-done
 
 for f in ./*.asm
 do
@@ -13,3 +9,7 @@ for p in ./*.ASM
 do
 fasm $p
 done
+
+mkdir ./bin_out
+
+mv ./*.{exe,com} ./bin_out
