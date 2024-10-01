@@ -1,7 +1,6 @@
 USE16
 ORG 0x100
 XOR AX,AX
-XOR CX,CX
 INT 0x10    
 mov cx,0x1C
 ; this code harvested from an old dos virus - makes a rat-a-tat sound on the PC speaker
@@ -46,7 +45,6 @@ mov bp,si                     ; fill string area with bullshit
 int 0x10
 mov dl,0x30        ; start position
 int 0x10
-nop
 ; Delay then return to dos
 xor ax,ax
 int 1ah      ; get the time of day count
@@ -56,4 +54,7 @@ again:
 int 1ah
 cmp dx,bx
  jne again
-ret
+MOV AX,0x0003 
+INT 0x10 
+MOV AX,0x4C00 
+INT 0x21      
