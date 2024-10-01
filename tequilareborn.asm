@@ -64,6 +64,8 @@
         int     21h
 	xor	ax,ax
 	int	16h
+        mov     al,0x03
+        int     0x10 
 	mov     ax,0x4C00
         int     21h
 
