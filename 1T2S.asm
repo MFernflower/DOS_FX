@@ -26,7 +26,8 @@ int 0x10 ; reset screen
 mov dx,t2step
 mov ax,0x0900
 int 0x21
-ret      
+MOV AX,0x4C00 
+INT 0x21      
 padding: times 5 db 0x90
 battles db "It's taking too long to figure it out!$"
 t2step db "Alright already!$"
