@@ -1,5 +1,8 @@
+        ; this is based off of some FASM example code that I modified to make more accurate to the "TEQUILA" dos virus
         use16
-	org 0x100
+        format MZ
+        push cs
+        pop ds
 	mov	ax,0x0013
 	int	10h
 	push	0A000h
@@ -61,7 +64,8 @@
         int     21h
 	xor	ax,ax
 	int	16h
-	ret
+	mov     ax,0x4C00
+        int     21h
 
 x_left dd -2.2
 y_top dd 1.25
@@ -74,4 +78,4 @@ y dd ?
 
 i dw ?
 
-exit_text db 'BEER AND TEQUILA FOREVER',0x21,0x24
+exit_text db 'BEER AND TEQUILA FOREVER - KEY TO GO ON',0x21,0x24
