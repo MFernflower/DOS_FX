@@ -20,5 +20,6 @@ int 0x10 ; clear screen
 mov dx,text ; exit text
 mov ah,0x09 ; exit text
 int 0x21  
-ret
+MOV AX,0x4C00 
+INT 0x21      
 text db "Juice B Crypts",0x24
