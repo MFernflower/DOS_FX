@@ -62,4 +62,7 @@ keycheck:
 mov ah,1h ; Check if key touched
 int 16h   ; Check if key touched
 jz keycheck
-ret
+MOV AX,0x0002 ; CLEAR SCREEN
+INT 0x10 ; CLEAR SCREEN
+MOV AX,0x4C00 ; exit back to dos the safe way
+INT 0x21      ; do it
