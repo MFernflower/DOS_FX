@@ -15,7 +15,8 @@ jz mloop
 jnz cleanup
 ;----------
 cleanup:
-mov al,0x03
-int 10h
-ret
+MOV AX,0x0003 
+INT 0x10 
+MOV AX,0x4C00 
+INT 0x21      
 byte_string db 1Ah,9h,5Eh,24h
