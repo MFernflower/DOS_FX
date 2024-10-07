@@ -1,9 +1,10 @@
+; this is a rework of NEWPORT_A.asm I wrote when stoned - it makes a nice graphical effect 
 USE16
 ORG 0x100 
 PUSH WORD 0x0B800  
 POP ES           
 XOR DI,DI 
-MIDDLE:
+KEYLOOP:
 MOV AH,0x01
 INT 0x16
 JNZ EXIT1
@@ -14,7 +15,7 @@ STOSW
 OR AX,0xBEEF
 STOSW
 LOOP WRITEMEM
-JMP MIDDLE
+JMP KEYLOOP
 
 EXIT1:
 MOV AX,0x0003 
