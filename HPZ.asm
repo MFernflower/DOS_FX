@@ -3,7 +3,7 @@
 use16
 org 0x100
 mov ax,0x0013
-int 10h ; to mode 13 we go!
+int 0x10
 mov ax,0x0A000
 mov ds,ax
 xor bx,bx
@@ -17,18 +17,18 @@ mov [bx],ax
 sub bx,1280 
 inc bx
 inc ax
-cmp ax,0x0FF
+cmp ax,0x01FF
 jng MAINLOOP
 mov ax,0x1301
-mov bx,0006h ; last byte of BX seems to be text color?
+mov bx,0x0006 ; last byte of BX seems to be text color?
 mov cx,0x003A
 mov dx,0x0A0B
-int 10h
+int 0x10
 mov cx,0x1C
-keycheck:
-mov ah,1h ; Check if key touched
-int 16h   ; Check if key touched
-jz keycheck
+KEYTOUCH:
+mov ah,0x0001 ; Check if key touched
+int 0x16   ; Check if key touched
+jz KEYTOUCH ; if not we loop again 
 mov ax,0x0002 ; CLEAR SCREEN
 int 0x10 ; CLEAR SCREEN
 mov ax,0x4C00 ; exit back to dos the safe way
