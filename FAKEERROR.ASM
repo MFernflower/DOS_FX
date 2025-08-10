@@ -17,27 +17,28 @@ inc bx
 inc ax
 cmp ax,0x01FF
 jng MAINLOOP
-; turn on pc speaker here
-mov cx,0x0000
+; make horrible tone on pc speaker
 mov al,182
 out 0x43,al
-mov ax,cx			
+mov ax,cx                       
 out 0x42,al
 mov al,ah
 out 42h,al
-in al,0x61			
+in al,0x61                      
 or al,0x03
 out 0x61, al
+; end 
 ; draw garbage on screen 
 mov ax,0x1301
-mov bx,0x0006 ; last byte of BX seems to be text color?
+mov bx,0x0005 ; last byte of BX seems to be text color?
 mov cx,0x003A
 mov dx,0x0A0B
 int 0x10
+; end
 ; Delay for a bit then return to dos (after shutting off pc speaker and clearing the screen)
 xor ax,ax
-int 1ah      ; get the time of day count
-add  dx,222   ; this is a okay delay for what we are doing
+int 0x1a      ; get the time of day count
+add  dx,120   ; this is a okay delay for what we are doing
 mov bx,dx    ; store end of delay value in bx
 again:                           
 int 0x1a
