@@ -17,19 +17,19 @@
     out 0x42, al
 
     ; --- Turn on the PC speaker ---
-    ; The speaker is enabled by setting bits 0 and 1 of port 0x61.
     in al, 0x61
     or al, 0x03
     out 0x61, al
+
     main_loop:
-    ; --- Random Number Generation ---
+    ; --- Randomness provider for main_loop (do not change values here!) ---
     mov ax, [12345]
     imul bx, ax, 22345
     add bx, 56789
     mov [12345], bx
 
-    ; --- Screen Fill ---
-    mov al, 0x06    ; symbol to use
+    ; --- Write to screen ---
+    mov al, 0x0F    ; Symbol to use
     mov ah, bl      ; Use the new random value for color
     and ah, 0x0F    ; Mask to get a value from 0-15 for the color
     
@@ -51,9 +51,10 @@
     int 0x10
 
  
-    mov ax, 0x0100     ; Function to check for keyboard press
-    int 0x16
-    jz main_loop    ; If zero flag is set, no key pressed, continue loop
+    mov ax, 0x0100     ; Check for keyboard press
+    int 0x16           ; Do it
+    jz main_loop       ; If zero flag is set we the continue loop - else we drop down to the exit block
+
     ; exit block starts below (turn off pc speaker, clear screen, print text and exit to dos)
     in al, 0x61
     and al, 0xfc
