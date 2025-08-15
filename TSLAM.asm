@@ -1,4 +1,5 @@
-    ; FFBADA2.asm - A large portion of this code was made by AI but fixed by myself
+    ; TERMINAL SLAM - A large portion of this code was made by AI but fixed by myself  
+    ; Named after a squarepusher song
     use16
     org 0x100
 
@@ -29,7 +30,7 @@
     mov [12345], bx
 
     ; --- Write to screen ---
-    mov al, 0x0F    ; Symbol to use
+    mov al, 0xB0    ; 
     mov ah, bl      ; Use the new random value for color
     and ah, 0x0F    ; Mask to get a value from 0-15 for the color
     
