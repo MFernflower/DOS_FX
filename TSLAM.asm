@@ -43,7 +43,6 @@
     mov dx, bx
     and dl, 0x4F     ; Mask to get a value from 0-79
     
-    xor bh, bh      ; Page 0
     mov ah, 0x02     ; Function to set cursor position
     int 0x10
     
