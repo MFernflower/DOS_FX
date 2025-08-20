@@ -30,7 +30,7 @@
     mov [12345], bx
 
     ; --- Write to screen ---
-    mov al, 0xB0    ; 
+    mov al, 0x0F    ; 
     mov ah, bl      ; Use the new random value for color
     and ah, 0x0F    ; Mask to get a value from 0-15 for the color
     
@@ -42,7 +42,7 @@
     ; Get a random column (0-79)
     mov dx, bx
     and dl, 0x4F     ; Mask to get a value from 0-79
-    
+    xor bh, bh       ; Page zero 
     mov ah, 0x02     ; Function to set cursor position
     int 0x10
     
@@ -67,3 +67,4 @@
     mov ax, 0x4c00   ; Return to MS-DOS
     int 0x21
     exit_txt db '0xFFBADA - TERMINAL SLAMMED!$'
+
