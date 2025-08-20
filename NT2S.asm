@@ -1,18 +1,12 @@
-use16
-org 0x100 
+    ; NT2S.asm - New (AI rewritten) Titanium 2 Step 
+    use16
+    org 0x100 
+    mov ax, 0x0003
+    int 0x10
+    push word 0x0B800
+    pop es
+    xor di, di
 
-; NT2S.asm - New Titanium 2 Step version that has been optimized 
-
-; Reset the screen
-mov ax, 0x0003
-int 0x10
-push word 0x0B800
-pop es
-
-; Initialize the index register (DI) to 0
-xor di, di
-
-; Main loop
 main_loop:
     ; Increment the index by 0x051D
     add di, 0x051D
