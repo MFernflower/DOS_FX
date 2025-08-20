@@ -13,11 +13,9 @@ loop printloop
 ;---------------------------------------------------
 waitloop:
 mov ah,0x1
-int 16h
+int 0x16
 jz waitloop
-jnz cleanup
 ;---------------------------------------------------
-cleanup:
 MOV AX,0x0002 ; CLEAR SCREEN
 INT 0x10 ; CLEAR SCREEN
 MOV AX,0x4C00 ; exit back to dos the safe way
