@@ -15,10 +15,10 @@ JMP WRITE_LOOP
 
 EXIT1:
 MOV AX,0x0003 
-INT 0x10 
-MOV AX,0x4C00 
-INT 0x21      
+INT 0x10    
 MOV DX, txt
 MOV AH, 0x09
 int 0x21
+MOV AX,0x4C00 
+INT 0x21   
 txt db "Change my pitch up! Smack my VGA up!$"
