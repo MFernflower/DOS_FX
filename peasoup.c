@@ -19,7 +19,7 @@ void play_game() {
                     return;
                 }
                 if (pressed == 'A' || pressed == 'a') {
-                    play_game();
+                    main();
                     return;
                 }
             }
@@ -64,3 +64,4 @@ int main() {
 
     return 0;
 }
+
