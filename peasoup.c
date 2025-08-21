@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <conio.h>
+#include <dos.h>
 
 void play_game() {
     char pressed;
@@ -19,7 +20,7 @@ void play_game() {
                     return;
                 }
                 if (pressed == 'A' || pressed == 'a') {
-                    main();
+                    play_game();
                     return;
                 }
             }
@@ -64,4 +65,3 @@ int main() {
 
     return 0;
 }
-
