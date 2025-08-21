@@ -1,7 +1,5 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <conio.h>
-#include <dos.h>
 
 void play_game() {
     char pressed;
@@ -18,11 +16,11 @@ void play_game() {
             while (1) {
                 pressed = getch();
                 if (pressed == 'B' || pressed == 'b') {
-                     _exit( EXIT_SUCCESS );
+                    return;
                 }
                 if (pressed == 'A' || pressed == 'a') {
                     play_game();
-                    break;
+                    return;
                 }
             }
         }
@@ -33,23 +31,21 @@ void play_game() {
             nosound();
             printf("You win!\n");
             printf("Want to play again? (Press A=yes, Press B=no)\n");
-            break;
-        }
-    }
-
-    while (1) {
-        pressed = getch();
-        if (pressed == 'B' || pressed == 'b') {
-             _exit( EXIT_SUCCESS );
-        }
-        if (pressed == 'A' || pressed == 'a') {
-            play_game();
-            break;
+            while (1) {
+                pressed = getch();
+                if (pressed == 'B' || pressed == 'b') {
+                    return;
+                }
+                if (pressed == 'A' || pressed == 'a') {
+                    play_game();
+                    return;
+                }
+            }
         }
     }
 }
 
-void main() {
+int main() {
     char pressed;
 
     printf("Welcome to Carl's Pea Soup Game!\n");
@@ -58,7 +54,7 @@ void main() {
     while (1) {
         pressed = getch();
         if (pressed == 'B' || pressed == 'b') {
-             _exit( EXIT_SUCCESS );
+            return 0;
         }
         if (pressed == 'A' || pressed == 'a') {
             play_game();
@@ -66,4 +62,5 @@ void main() {
         }
     }
 
+    return 0;
 }
