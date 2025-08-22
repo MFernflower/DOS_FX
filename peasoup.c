@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include <dos.h>
-
+// a port of a stupid wii homebrew shitpost made by gskartwii to msdos
 void play_game() {
     char pressed;
 
@@ -65,3 +65,4 @@ int main() {
 
     return 0;
 }
+
