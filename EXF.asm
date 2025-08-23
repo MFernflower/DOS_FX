@@ -11,19 +11,14 @@
  int 0x21
 
  main_loop:
- ; Generate a random number
- mov ax, [12345]
- imul ax, 22345
- add ax, 56789
- mov [12345], ax
-
- ; Print the random number in yellow
+ ; write 8 random shifting yellow symbols to the screen
+ in  ax, 0x41
  mov dx, ax
  mov bx, 0x000E
  mov ah, 0x09
  mov cx, 8
  int 0x10
-
+ 
  ; Check for keyboard input
  mov ax, 0x0100
  int 0x16
