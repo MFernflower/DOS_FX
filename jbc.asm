@@ -4,7 +4,7 @@ mov ax, 0x0013
 int 0x10                ; Set video mode to 320x200 pixels, 256 colors
 push word 0xa000
 pop es                  ; Set ES segment to video memory
-xor di, di              ; Initialize DI to 0
+mov DI, 0xFFFF          ; Initialize DI
 wloop:
 in ax, 0x40          ; Get random number from timer
 sub di, ax           ; Subtract random number from DI
