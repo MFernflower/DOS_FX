@@ -1,6 +1,6 @@
 USE16
 ORG 0x100
-
+; NEWPORT A (NUPRT_1.asm) - named after the Vibrasphere song, not the ciggie brand 
 PUSH WORD 0x0B800
 POP ES
 WRITE_LOOP:
