@@ -3,11 +3,11 @@
 use16
 org 0x100 
 mov dx,battles
-mov ax,0x0900
+mov ah,0x09
 int 0x21
 push word 0x0B800  
 pop es           
-xor di,di 
+mov di,0x000F
 parta:
 add di,0x051d
 cmp di,0x3e80
@@ -24,10 +24,9 @@ jz parta  ; if not we start allover again
 mov ax,0x0003 ; reset screen
 int 0x10 ; reset screen
 mov dx,t2step
-mov ax,0x0900
+mov ah,0x09
 int 0x21
-MOV AX,0x4C00 
-INT 0x21      
-padding: times 5 db 0x90
+mov ax,0x4C00 
+int 0x21      
 battles db "It's taking too long to figure it out!$"
 t2step db "Alright already!$"
