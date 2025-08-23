@@ -5,7 +5,7 @@
     int 0x10
     push word 0x0B800
     pop es
-    xor di, di
+    mov di, 0x000F
 
 main_loop:
     ; Increment the index by 0x051D
@@ -44,6 +44,4 @@ continue:
     mov ax, 0x4C00
     int 0x21
     
-    ; .data
-    times 4 db 0x90
     battles db "It's taking too long to figure it out!$"
