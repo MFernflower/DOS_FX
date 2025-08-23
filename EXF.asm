@@ -11,16 +11,17 @@
  int 0x21
 
  main_loop:
- ; write 8 random shifting yellow symbols to the screen
- in  ax, 0x41
+ ; write some random shifting yellow symbols to the screen
+ in  ax, 0x40
+ and ax, 0x0E
  mov dx, ax
  mov bx, 0x000E
  mov ah, 0x09
- mov cx, 8
+ mov cx, 10
  int 0x10
  
  ; Check for keyboard input
- mov ax, 0x0100
+ mov ah, 0x01
  int 0x16
  jz main_loop
 
