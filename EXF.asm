@@ -13,7 +13,6 @@
  main_loop:
  ; write some random shifting yellow symbols to the screen
  in  ax, 0x40
- and ax, 0x0E
  mov dx, ax
  mov bx, 0x000E
  mov ah, 0x09
