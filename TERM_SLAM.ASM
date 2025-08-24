@@ -1,5 +1,4 @@
-    ; TERMINAL SLAM - A large portion of this code was made by AI but fixed by myself  
-    ; Named after a squarepusher song
+    ; TERMINAL SLAM - Named after a squarepusher song
     use16
     org 0x100
 
@@ -53,14 +52,14 @@
     mov cx, 1        ; Count of characters to write
     int 0x10
     
-    mov dx, 0x42          
+    mov dx, 0x41          
     insb                 
 
     mov ax, 0x0100     ; Check for keyboard press
     int 0x16           ; Do it
     jz main_loop       ; If zero flag is set we continue the loop - else we drop down to the exit block
 
-    ; exit block starts below (turn off pc speaker, clear screen, print text and exit to dos)
+    ; exit block starts below (turn off pc speaker, clear screen, print fake error text and exit to dos)
     
     in al, 0x61
     and al, 0xfc
@@ -73,7 +72,8 @@
     mov dx, exit_txt
     int 0x21
     
-    mov ax, 0x4c00   ; Return to MS-DOS
+    mov ax, 0x4c00   
     int 0x21
     
     exit_txt db 'ERROR CODE: 0xFFBADA - TERMINAL SLAMMED!$'
+
