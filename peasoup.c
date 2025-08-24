@@ -17,11 +17,10 @@ void play_game() {
             while (1) {
                 pressed = getch();
                 if (pressed == 'B' || pressed == 'b') {
-                    return;
+                    return 0;
                 }
                 if (pressed == 'A' || pressed == 'a') {
                     play_game();
-                    return;
                 }
             }
         }
@@ -35,11 +34,10 @@ void play_game() {
             while (1) {
                 pressed = getch();
                 if (pressed == 'B' || pressed == 'b') {
-                    return;
+                    return 0;
                 }
                 if (pressed == 'A' || pressed == 'a') {
                     play_game();
-                    return;
                 }
             }
         }
@@ -55,14 +53,12 @@ int main() {
     while (1) {
         pressed = getch();
         if (pressed == 'B' || pressed == 'b') {
-            return 0;
+            _exit(EXIT_SUCCESS);
         }
         if (pressed == 'A' || pressed == 'a') {
             play_game();
-            break;
         }
     }
-
-    return 0;
 }
+
 
