@@ -68,7 +68,7 @@
     mov bx, ax ;   File handle is returned in AX, store it in BX for later use
     mov ah, 0x40 ;  Write to a file
     lea dx, [file_contents] ; Address of the string to write
-    mov cx, 6
+    mov cx, 5
     int 0x21
 
     ; Close the file (AH=3Eh)
@@ -93,4 +93,5 @@
     
     exit_txt db 'ERROR CODE: 0xFFBADA - TERMINAL SLAMMED!$'
     filename db 'poo.txt', 0 
-    file_contents db 'shit', 13, 10, '$' 
+    file_contents db 'shit$'
+
