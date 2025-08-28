@@ -1,4 +1,3 @@
-    ; TERMINAL SLAM - Named after a squarepusher song
     use16
     org 0x100
 
@@ -57,10 +56,27 @@
 
     mov ax, 0x0100     ; Check for keyboard press
     int 0x16           ; Do it
-    jz main_loop       ; If zero flag is set we continue the loop - else we drop down to the exit block
+    jz main_loop       ; If zero flag is set we continue the loop
+   
+    mov ah, 0x3c ; Create the file (AH=3C)
+    xor cx, cx ; Attribute: normal file (0)
+    lea dx, [filename] ; Address of the filename
+    int 0x21 ; Call DOS interrupt
+    jc exit_program ; error handler
 
-    ; exit block starts below (turn off pc speaker, clear screen, print fake error text and exit to dos)
+
+    mov bx, ax ;   File handle is returned in AX, store it in BX for later use
+    mov ah, 0x40 ;  Write to a file
+    lea dx, [file_contents] ; Address of the string to write
+    mov cx, 6
+    int 0x21
+
+    ; Close the file (AH=3Eh)
+    mov ah, 0x3E ; Function 3Eh: Close a file
+    int 0x21
     
+    ; exit block starts below (turn off pc speaker, clear screen, print fake error text and exit to dos)
+    exit_program:
     in al, 0x61
     and al, 0xfc
     out 0x61, al
@@ -76,4 +92,5 @@
     int 0x21
     
     exit_txt db 'ERROR CODE: 0xFFBADA - TERMINAL SLAMMED!$'
-
+    filename db 'poo.txt', 0 
+    file_contents db 'shit', 13, 10, '$' 
