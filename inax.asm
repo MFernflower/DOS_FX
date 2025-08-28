@@ -7,9 +7,8 @@
     mov cx, (320 * 200) / 2  
     xor di,di
     draw_loop:
-    in ah, 0x41
-    in al, 0x40
-    and al, ah
+    in ax,0x41
+    xor ax, cx
     stosw
     loop draw_loop
     
