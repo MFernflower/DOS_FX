@@ -1,16 +1,38 @@
-USE16
-ORG 0x100
-PUSH WORD 0x0B800  
-POP ES           
-XOR DI,DI 
-MOV AX,0x000F
-WRITEMEM:
-INC AX
-STOSW 
-JNO WRITEMEM
-XOR AX,AX ; CHECK IF KEY TOUCHED
-INT 0x16   ; CHECK IF KEY TOUCHED
-MOV AX,0x0003 ; CLEAR SCREEN
-INT 0x10 ; CLEAR SCREEN
-MOV AX,0x4C00 ; exit back to dos the safe way
-INT 0x21      ; do it
+use16
+org 0x100
+
+push word 0x0B800  
+pop es           
+
+mloop:
+push ds
+mov ax,0x0040       ; bios_data_area segment
+mov ds,ax
+mov ax,[0x006c]     ; get low word of timer ticks
+pop ds
+mov [seed],ax      ; store as the seed
+call get_random     
+and al,0xF ; mask that makes the effect less "gross"
+stosb
+mov ah,0x01
+int 0x16
+jz mloop
+
+mov ax,0x0003       ; clear screen 
+int 0x10             ; call bios video interrupt
+mov ax,0x4c00       ; exit program
+int 0x21             ; call dos interrupt
+
+; generate a pseudo-random number
+; output: ax = random number
+get_random:
+mov ax,[seed]      ; load the current seed
+mov dx,[multiplier]  ; load the multiplier
+imul dx              ; dx:ax = ax * dx
+add ax,[increment]   ; add the increment
+mov [seed],ax      ; store the new seed
+ret
+
+seed:           dw 0            ; Random seed (initially 0)
+multiplier:     dw 32767        ; Multiplier for the algorithm
+increment:      dw 12345        ; Increment for the algorithm
