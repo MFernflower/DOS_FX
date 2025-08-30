@@ -1,0 +1,22 @@
+
+USE16
+ORG 0x100 
+PUSH WORD 0x0B800  
+POP ES           
+XOR DI,DI 
+KEYLOOP:
+MOV AH,0x01
+INT 0x16
+JNZ EXIT1
+mov ax, [12345]
+imul ax, 22345
+add ax, 56789
+mov [12345], ax
+STOSB
+JMP KEYLOOP
+
+EXIT1:
+MOV AX,0x0003 
+INT 0x10 
+MOV AX,0x4C00 
+INT 0x21      
