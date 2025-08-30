@@ -28,20 +28,21 @@ in al,0x61
 or al,0x03
 out 0x61, al
 ; end
-xor dx,dx
 ; draw garbage on screen 
 mov ax,0x1301
-mov bx,0x0005 ; last byte of BX seems to be text color?
+mov bx,0x000E ; last byte of BX seems to be text color?
 mov cx,0x003A
 mov dx,0x0A0B
 int 0x10
 ; end
+xor dx,dx
 ; Delay for a bit then return to dos (after shutting off pc speaker and clearing the screen)
 xor ax,ax
 int 0x1a      ; get the time of day count
 add  dx,120   ; this is a okay delay for what we are doing
 mov bx,dx    ; store end of delay value in bx
-again:                           
+again:   
+xor ax,ax
 int 0x1a
 cmp dx,bx
 jne again
@@ -52,3 +53,4 @@ and al,0xFC
 out 0x61,al
 mov ax,0x4C00 
 int 0x21      
+ret
