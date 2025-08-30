@@ -15,7 +15,7 @@ jnz exit1
 stosw
 jmp mloop
     
-  exit1:
+exit1:
 mov ax, 0x0003       ; clear screen 
 int 0x10             ; call bios video interrupt
 mov dx, text         ; load address of exit text
