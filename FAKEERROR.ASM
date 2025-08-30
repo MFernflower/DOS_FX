@@ -27,7 +27,8 @@ out 42h,al
 in al,0x61                      
 or al,0x03
 out 0x61, al
-; end 
+; end
+xor dx,dx
 ; draw garbage on screen 
 mov ax,0x1301
 mov bx,0x0005 ; last byte of BX seems to be text color?
