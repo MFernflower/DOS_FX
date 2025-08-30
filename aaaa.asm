@@ -12,7 +12,7 @@ mov ax, [12345]
 imul ax, 22345
 add ax, 56789
 mov [12345], ax
-STOSB
+STOSW
 JMP KEYLOOP
 
 EXIT1:
