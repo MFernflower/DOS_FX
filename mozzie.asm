@@ -1,5 +1,5 @@
     use16
-    org 0x100                  ; MOZZIE.asm - an AI optimized version of SKEETER.asm that compiles to a com file
+    org 0x100                  ; MOZZIE.asm -  AI optimized version of SKEETER.asm that compiles to a com file
     mov cx, 3                  ; Loop counter
     ; BEGIN AI OPTIMIZED CODE FOR SOUND EFFECT
 mosquito_loop:
