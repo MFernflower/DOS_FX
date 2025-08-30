@@ -1,6 +1,8 @@
 ; Dedicated to a very MSDOS virus payload inspired music video - Titanium 2 step by Battles
 use16
 org 0x100 
+mov ax,0x0003 ; reset screen
+int 0x10 ; reset screen
 mov dx,battles
 mov ah,0x09
 int 0x21
