@@ -1,5 +1,4 @@
 ; Dedicated to a very MSDOS virus payload inspired music video - Titanium 2 step by Battles
-; Titanium 2 Step REWRITE
 use16
 org 0x100 
 mov dx,battles
@@ -28,5 +27,5 @@ mov ah,0x09
 int 0x21
 mov ax,0x4C00 
 int 0x21      
-battles db 0x20, 0x20, 0x20, "It's taking too long to figure it out!$"
+battles db 5 dup (0x20), "It's taking too long to figure it out!$"
 t2step db "Alright already!$"
