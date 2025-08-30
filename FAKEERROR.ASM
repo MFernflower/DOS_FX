@@ -36,13 +36,13 @@ mov dx,0x0A0B
 int 0x10
 ; end
 xor dx,dx
-; Delay for a bit then return to dos (after shutting off pc speaker and clearing the screen)
+xor bx,bx
 xor ax,ax
+; Delay for a bit then return to dos (after shutting off pc speaker and clearing the screen)
 int 0x1a      ; get the time of day count
 add  dx,120   ; this is a okay delay for what we are doing
 mov bx,dx    ; store end of delay value in bx
 again:   
-xor ax,ax
 int 0x1a
 cmp dx,bx
 jne again
