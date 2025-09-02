@@ -29,5 +29,5 @@ mov ah,0x09
 int 0x21
 mov ax,0x4C00 
 int 0x21      
-battles db 10 dup (0x20), "It's taking too long to figure it out!$"
+battles db 26 dup (0x20), "It's taking too long to figure it out!$"
 t2step db 10 dup (0x20), "Alright already!$"
