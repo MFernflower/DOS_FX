@@ -38,6 +38,7 @@ mosquito_delay2:
     xor ax, ax
     int 0x1A
     xchg dx, bx
+    and bx, 0x7FFF              ; Mask the bx register to ensure the letters are never black
     mov ah, 0x06
     xor cx, cx
     mov dx, 0x184f
