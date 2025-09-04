@@ -23,15 +23,9 @@
     pop cx
     loop draw_loop
     
-    ; Wait for a key press before exiting
-    xor ax, ax
-    int 0x16
-    
-    ; Restore original video mode (Mode 03h)
+    ; Exit to DOS
     mov ax, 0x0003
     int 0x10 
-    
-    ; Exit to DOS
     mov ax, 0x4c00
     int 0x21
 
