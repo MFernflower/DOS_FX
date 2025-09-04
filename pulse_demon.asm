@@ -10,6 +10,7 @@
     mov cx, (320 * 200) / 2
 
     draw_loop:
+    push cx
     mov ax, [12345]
     imul ax, 22345
     add ax, 56789
@@ -18,7 +19,6 @@
     movzx si, al     
     and si, 0x3F      
     add si, 0xF1     
-    push cx
     call play_sound_subroutine
     pop cx
     loop draw_loop
