@@ -1,6 +1,5 @@
     use16
     org 0x100
-start:     
     push word 0x0b800
     pop es           
     draw_loop:
