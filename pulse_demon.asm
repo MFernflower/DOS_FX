@@ -1,6 +1,6 @@
     use16
     org 0x100
-    
+    ; PULSE_DEMON.ASM - This may not work properly on some systems - BEWARE!
     mov ax, 0x0013
     int 0x10      
     
