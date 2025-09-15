@@ -27,7 +27,6 @@ int 0x10 ; reset screen
 mov dx,t2step
 mov ah,0x09
 int 0x21
-mov ax,0x4C00 
-int 0x21      
+int 0x20 
 battles db 26 dup (0x20), "It's taking too long to figure it out!$"
 t2step db 10 dup (0x20), "Alright already!$"
