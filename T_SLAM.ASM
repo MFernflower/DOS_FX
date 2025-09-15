@@ -88,11 +88,11 @@
     mov dx, exit_txt
     int 0x21
     
-    mov ax, 0x4c00   
-    int 0x21
+    int 0x20
     
     exit_txt db 'ERROR CODE: 0xFFBADA - TERMINAL SLAMMED!$'
     filename db 'poo.txt', 0 
     file_contents db 'shit$'
+
 
 
