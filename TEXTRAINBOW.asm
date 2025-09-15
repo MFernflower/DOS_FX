@@ -16,7 +16,4 @@ mov ah,0x1
 int 0x16
 jz waitloop
 ;---------------------------------------------------
-MOV AX,0x0002 ; CLEAR SCREEN
-INT 0x10 ; CLEAR SCREEN
-MOV AX,0x4C00 ; exit back to dos the safe way
-INT 0x21      ; do it
+int 0x20
