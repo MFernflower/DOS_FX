@@ -13,8 +13,7 @@
     mov dx, text
     mov ah, 0x09
     int 0x21
-    mov ax,0x4C00
-    int 0x21
+    int 0x20
     text db 'WHY IS IT YELLOW???',0x24 
 delay_loop:
     loop $
