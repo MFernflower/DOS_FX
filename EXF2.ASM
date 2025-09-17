@@ -4,7 +4,7 @@
     pop es           
     draw_loop:
     mov cx, 8000
-    call delay_loop
+    loop $
     mov ax, 0xFEFE
     stosb
     mov ah,0x01
@@ -15,6 +15,3 @@
     int 0x21
     int 0x20
     text db 'WHY IS IT YELLOW???',0x24 
-delay_loop:
-    loop $
-    ret
