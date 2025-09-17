@@ -1,3 +1,5 @@
+# This is a shitty ai-generated makefile!
+
 # Define the assembler to use
 ASSEMBLER = fasm
 
