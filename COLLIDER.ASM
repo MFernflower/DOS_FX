@@ -1,4 +1,4 @@
-; this is a rework of NEWPORT_A.asm I wrote when stoned - it makes a nice graphical effect 
+; I wrote this when stoned - it makes a nice graphical effect 
 USE16
 ORG 0x100 
 PUSH WORD 0x0B800  
@@ -19,4 +19,5 @@ JMP KEYLOOP
 
 EXIT1:
 INT 0x20
+
 
