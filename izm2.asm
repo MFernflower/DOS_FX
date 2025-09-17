@@ -15,11 +15,10 @@ mov ah, 0x01
 int 0x16
 jz main_loop
     
-mov ax, 0x0003       ; clear screen 
-int 0x10             ; Call BIOS video interrupt
+mov al, 0x03         ; clear screen 
+int 0x10             ; do it
 mov dx, text         ; Load address of exit text
 mov ah, 0x09         ; Print string function
 int 0x21             ; Call DOS interrupt
-mov ax, 0x4C00       ; Exit program
-int 0x21             ; Call DOS interrupt
+int 0x20
 text db "Young hustler, a little gotta last$"
