@@ -22,8 +22,4 @@
     ; Wait for a key press before exiting
     xor ax, ax
     int 0x16
-    
-    ; Restore original video mode (Mode 03h) and exit
-    mov ax, 0x0003
-    int 0x10 
     int 0x20
