@@ -18,6 +18,5 @@ int 0x10             ; Call BIOS video interrupt
 mov dx, text         ; Load address of exit text
 mov ah, 0x09         ; Print string function
 int 0x21             ; Call DOS interrupt
-mov ax, 0x4C00       ; Exit program
-int 0x21             ; Call DOS interrupt
+int 0x20
 text db "Change my pitch up! Smack my VGA up!", 0x24
