@@ -1,6 +1,6 @@
     use16
     org 0x100
-    mov ax, 0x0013
+    mov al, 0x13
     int 0x10               
     push word 0xa000
     pop es                 
