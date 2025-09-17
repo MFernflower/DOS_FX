@@ -10,6 +10,8 @@
     mov ah,0x01
     int 0x16
     jz draw_loop
+    mov al, 0x03
+    int 0x10
     mov dx, text
     mov ah, 0x09
     int 0x21
