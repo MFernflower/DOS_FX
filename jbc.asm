@@ -13,7 +13,7 @@ stosb                ; Store byte at ES:DI and increment DI (again)
 mov ah, 0x01         ; Check if a key is pressed
 int 0x16             ; Call BIOS keyboard interrupt
 jz wloop             ; If no key is pressed, loop back
-mov al, 0x03         ; CLEAR SCREEN
+mov ax, 0x0003         ; CLEAR SCREEN
 int 0x10             ; Call BIOS video interrupt
 mov dx, text         ; Load address of exit text
 mov ah, 0x09         ; Print string function
