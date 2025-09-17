@@ -15,7 +15,7 @@
     imul ax, 22345
     add ax, 56789
     mov [12345], ax
-    or ax, 0x1010
+    neg ax
     stosb
     loop draw_loop
     
