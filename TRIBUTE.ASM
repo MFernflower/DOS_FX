@@ -106,8 +106,6 @@ cmp dx,bx
 jne shoot_delay
 pop cx
 loop new_shot
-mov AX,0x0003
-int 0x10
-MOV AX,0x4C00
-INT 0x21
+int 0x20
+
 PAYLOAD FILE 'PAYLOAD.BIN'
