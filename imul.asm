@@ -22,4 +22,4 @@
     ; Wait for a key press before exiting
     xor ax, ax
     int 0x16
-    int 0x20
+    ret
