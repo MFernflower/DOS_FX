@@ -23,6 +23,5 @@ int 0x10             ; call bios video interrupt
 mov dx, text         ; load address of exit text
 mov ah, 0x09         ; print string function
 int 0x21             ; call dos interrupt
-int 0x20             ; kill process - back to dos we go
-
+ret
 text db "Time Shifter 1.0 - OF CHANGING MINDS", 0x24
