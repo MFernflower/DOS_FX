@@ -19,7 +19,5 @@
     dec di
     mov byte [ES:DI], 0x00
     cmp di, 0x0000
-    jne erase_loop
-    mov al,0x03  
-    int 0x10
-    int 0x20
+    jne erase_loop 
+    ret
