@@ -46,5 +46,5 @@ mosquito_delay2:
     mov dx, text
     mov ah, 0x09
     int 0x21
-    int 0x20
+    ret
     text db 'Fuck, man! Shit! Mosquitoes!',0x24 
