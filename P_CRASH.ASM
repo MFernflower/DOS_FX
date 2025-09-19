@@ -1,12 +1,13 @@
     use16
     org 0x100
-
+    mov al, 0x13
+    int 0x10
     ; Send the PIT control byte (0xb6) to port 0x43.
     mov al, 0xb6
     out 0x43, al
 
     ; Load the pit divisor value into the AX register.
-    mov ax, 0xEEEE
+    mov ax, 0x1BAF
 
     ; Send the low byte of the divisor to PIT channel 2, port 0x42.
     out 0x42, al
@@ -31,11 +32,8 @@
     mov [12345], bx
 
     ; --- Write to screen ---
-    in  al, 0x40     
+    mov al, bh      ; random char
     mov ah, bl      ; Use the new random value for color
-    and ah, 0x0F    ; Mask to get a value from 0-15 for the color
-
-    ; Get a random column (0-79)
     mov dx, bx
     and dl, 0x4F     ; Mask to get a value from 0-79
     xor bh, bh       ; Page zero 
@@ -43,6 +41,6 @@
     int 0x10
     
     mov ah, 0x09     ; Function to write character and attribute
-    mov cx, 1        ; Count of characters to write
+    mov cx, 0x0018   ; Count of characters to write
     int 0x10
     jmp hang_loop
