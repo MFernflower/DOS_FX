@@ -34,11 +34,6 @@
     in  al, 0x40     
     mov ah, bl      ; Use the new random value for color
     and ah, 0x0F    ; Mask to get a value from 0-15 for the color
-    
-    ; Get a random row (0-24)
-    mov dx, bx
-    and dh, 0x18     ; Mask to get a value from 0-24
-    shr dh, 3
 
     ; Get a random column (0-79)
     mov dx, bx
