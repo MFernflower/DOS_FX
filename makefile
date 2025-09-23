@@ -1,8 +1,5 @@
 # This is a shitty ai-generated makefile!
 
-# Define the assembler to use
-ASSEMBLER = fasm
-
 # Define the source and output directories
 SRC_DIR = .
 BIN_DIR = bin_out
@@ -20,10 +17,10 @@ all: $(BIN_DIR) $(COM_OUTPUTS)
 
 # Rule to assemble source files into .com in the current directory
 %.com: %.asm
-	$(ASSEMBLER) $<
+	$(fasm) $<
 
 %.COM: %.ASM
-	$(ASSEMBLER) $<
+	$(fasm) $<
 
 # Rule to create the bin_out directory
 $(BIN_DIR):
