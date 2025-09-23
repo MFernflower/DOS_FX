@@ -1,7 +1,7 @@
     use16
     org 0x100
 
-    mov al, 0x13
+    mov al, 0x13 
     int 0x10
 
     ; Send the PIT control byte (0xb6) to port 0x43.
@@ -24,7 +24,7 @@
     out 0x61, al
 
     hang_loop:
-    ; --- Randomness provider for main_loop (do not change values here!) ---
+    ; --- Randomness provider (do not change values here!) ---
     mov ax, [12345]
     imul bx, ax, 22345
     add bx, 56789
@@ -32,7 +32,7 @@
 
     ; --- Write to screen ---
     mov al, bh      ; random char
-    mov ah, bl      ; Use the new random value for color
+    mov ah, bl      ; random color
     mov dx, bx
     and dl, 0x4F     ; Mask to get a value from 0-79
     xor bh, bh       ; Page zero 
