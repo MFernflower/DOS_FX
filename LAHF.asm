@@ -5,7 +5,7 @@
     xor di, di          
     mov cx, 0xAFFF         
     mov dx, 0xFFFF
-    mov al, 0x00
+    xor ax, ax
 PrintLoop:
     lahf                ; get semi-random attribute 
     stosw               ; Store the character (AL) and attribute (AH)
