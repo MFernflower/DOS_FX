@@ -1,7 +1,9 @@
     use16
     org 0x100
+
     mov al, 0x13
     int 0x10
+
     ; Send the PIT control byte (0xb6) to port 0x43.
     mov al, 0xb6
     out 0x43, al
@@ -20,10 +22,7 @@
     in al, 0x61
     or al, 0x03
     out 0x61, al
-     
-    push word 0x0b800 
-    pop es
-    
+
     hang_loop:
     ; --- Randomness provider for main_loop (do not change values here!) ---
     mov ax, [12345]
