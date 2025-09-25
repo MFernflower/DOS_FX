@@ -4,21 +4,19 @@
     pop es        
     xor di,di
     draw_loop:
-    mov cx,0x2fff
+    mov cx, 0x2fff
     loop $
     inc di
     lahf
-    or ah, 0x0E
+    or ah, 0xE0
     mov byte [ES:DI],ah
     cmp di,0x1FFF
     jne draw_loop
-    xor ax,ax
-    int 0x16
     erase_loop:
-    mov cx, 0x27ff
+    mov cx, 0x2fff
     loop $
     dec di
     mov byte [ES:DI], 0x00
     cmp di, 0x0000
     jne erase_loop 
-    ret
+    int 0x20
