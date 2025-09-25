@@ -2,14 +2,15 @@
     org 0x100
     push word 0x0b800
     pop es        
-    xor di, di
+    xor di,di
     draw_loop:
-    mov cx, 0x27ff
+    mov cx,0x2fff
     loop $
-    in ax, 0x41
-    neg ax
-    stosb
-    cmp di, 0x0CFF 
+    inc di
+    lahf
+    or ah, 0x0E
+    mov byte [ES:DI],ah
+    cmp di,0x1FFF
     jne draw_loop
     xor ax,ax
     int 0x16
