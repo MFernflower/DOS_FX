@@ -4,7 +4,7 @@ All of these programs are completely benign - the ones with a P_ in the file nam
 
 You can compile this in either freedos (via the batch file) or linux (using make)
 
-Some code in places is quite messy but everything does work! 
+Some code in places is quite messy but everything does work! (except for things in the 'broken' folder - those need to be fixed up)
 
-Expect changes to code as I learn more and more about intel 80386
+Expect changes to code as I learn more and more about MSDOS assembly 
 
