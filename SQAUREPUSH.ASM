@@ -20,7 +20,8 @@
     loop $
     xor ax, ax 
     stosw
-    cmp di, 0x00FE
+    xor dx, dx
+    cmp di, dx
     jne erase_loop
     mov ax,0x0003
     int 0x10
