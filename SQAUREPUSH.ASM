@@ -24,4 +24,4 @@
     jne erase_loop
     mov ax,0x0003
     int 0x10
-    ret
+    int 0x20
