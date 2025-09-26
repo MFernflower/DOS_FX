@@ -7,8 +7,8 @@
     mov dx, 0xFFFF
     xor ax, ax
 PrintLoop:
-    lahf                ; get semi-random attribute 
-    stosw               ; Store the character (AL) and attribute (AH)
+    lahf               
+    stosw              
     inc al              
     dec dh              
     jnz PrintLoop       
