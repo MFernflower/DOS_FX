@@ -11,7 +11,7 @@ push ds
 mov ax, 0x0040       ; bios_data_area segment
 mov ds, ax
 mov ax, [0x006c]     ; get low word of timer ticks
-or ax, 0x0E0E
+neg ax
 stosw
 pop ds
 mov ah,0x01
@@ -25,4 +25,5 @@ mov ah, 0x09         ; print string function
 int 0x21             ; call dos interrupt
 int 0x20
 text db "Time Shifter 1.0 - OF CHANGING MINDS", 0x24
+
 
