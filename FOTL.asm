@@ -9,14 +9,14 @@ pop es                  ; Set ES segment to video memory
 wloop:
 mov dx, 0x40          ; read a byte of data from port 0x40
 insb                  ; write this byte into video memory  
+mov dx, text         ; Load address of exit text
+mov ah, 0x09         ; Print string function
+int 0x21             ; Call DOS interrupt
 mov ah, 0x01          ; Check if a key is pressed
 int 0x16              ; Call BIOS keyboard interrupt
 jz wloop              ; If no key is pressed, loop back
 
-mov al, 0x03         ; clear screen 
+mov ax, 0x0003         ; clear screen 
 int 0x10             ; Call BIOS video interrupt
-mov dx, text         ; Load address of exit text
-mov ah, 0x09         ; Print string function
-int 0x21             ; Call DOS interrupt
 int 0x20
 text db "Change my pitch up! Smack my VGA up!", 0x24
