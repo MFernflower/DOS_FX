@@ -37,7 +37,7 @@ mosquito_delay2:
     ; END AI OPTIMIZED CODE 
     xor ax, ax
     int 0x1A
-    mov dx, bx
+    mov bx, dx
     and bx, 0x7FFF              ; Mask the bx register to ensure the letters are never black
     mov ah, 0x06
     xor cx, cx
