@@ -1,6 +1,6 @@
     use16
     org 0x100                  ; MOZZIE.asm -  AI optimized version of SKEETER.asm that compiles to a com file
-    mov cx, 3                  ; Loop counter
+    mov cx, 4                  ; How many loops?
     ; BEGIN AI OPTIMIZED CODE FOR SOUND EFFECT
 mosquito_loop:
     push cx                    ; Save loop counter
@@ -37,7 +37,7 @@ mosquito_delay2:
     ; END AI OPTIMIZED CODE 
     xor ax, ax
     int 0x1A
-    xchg dx, bx
+    mov dx, bx
     and bx, 0x7FFF              ; Mask the bx register to ensure the letters are never black
     mov ah, 0x06
     xor cx, cx
@@ -46,5 +46,5 @@ mosquito_delay2:
     mov dx, text
     mov ah, 0x09
     int 0x21
-    ret
+    int 0x20
     text db 'Fuck, man! Shit! Mosquitoes!',0x24 
