@@ -13,9 +13,9 @@ mov al, [es:di]
 add al, dl
 mov [es:di], al
 
-mov ah, 0x01
-int 0x16
-jz main_loop
+in al, 0x60
+dec ax
+jnz main_loop
     
 mov ax, 0x0003       ; clear screen 
 int 0x10             ; Call BIOS video interrupt
