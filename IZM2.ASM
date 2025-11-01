@@ -19,7 +19,6 @@ mov ax, 0x0003       ; clear screen
 int 0x10             ; do it
 mov dx, text         ; Load address of exit text
 mov ah, 0x09         ; Print string function
-int 0x21             ; Call DOS interrupt
-ret
+int 0x21             ; do it
+int 0x20             ; Exit 
 text db "Young hustler, a little gotta last$"
-
