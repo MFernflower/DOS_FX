@@ -1,9 +1,10 @@
 ; A prank program version of newport that uses only 8 bytes
-; written by HellMood
+; shoutout to HellMood
 use16
 org 0x100
 les ax, [si]
-cli
-X:stosb
+aas
+XS:
+stosb
 in ax, 0x40
-jmp short X
+jmp XS
