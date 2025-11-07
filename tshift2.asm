@@ -14,6 +14,8 @@ mov ax, 0x0040       ; bios_data_area segment
 mov ds, ax
 mov ax, [0x006c]     ; get low word of timer ticks
 stosw
+out 0x42, al
+out 0x61, al
 pop ds
 mov ah,0x01
 int 0x16
