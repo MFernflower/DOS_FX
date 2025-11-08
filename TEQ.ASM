@@ -64,8 +64,7 @@ xor ax,ax
 int 0x16
 mov ax,0x0003
 int 0x10
-mov ax,0x4C00
-int 0x21
+int 0x20
 
 x_left dd-2.2
 y_top dd 1.25
@@ -79,4 +78,5 @@ y dd ?
 i dw ?
 
 exit_text db 'BEER AND TEQUILA FOREVER - KEY TO GO ON',0x21,0x24
+
 
