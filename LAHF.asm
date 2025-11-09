@@ -14,7 +14,7 @@ PrintLoop:
     jnz PrintLoop       
     mov dh, 0xF2        
     loop PrintLoop     
-    mov al, 0x03       ; clear screen 
+    xor ax, ax
     int 0x10             ; Call BIOS video interrupt
     mov dx, text         ; Load address of exit text
     mov ah, 0x09         ; Print string function
