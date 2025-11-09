@@ -22,6 +22,5 @@
    ; Wait for a key press before exiting
     xor ax, ax
     int 0x16
-    mov al, 0x03
     int 0x10 
     int 0x20
