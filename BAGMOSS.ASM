@@ -27,4 +27,6 @@
     xor bx, bx
     cmp di, bx
     jne erase_loop
+    mov al,0x03
+    int 0x10
     int 0x20
