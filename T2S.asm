@@ -1,8 +1,6 @@
 ; Dedicated to a very MSDOS virus payload inspired music video - Titanium 2 step by Battles
 use16
 org 0x100 
-mov ax,0x0003 ; reset screen
-int 0x10 ; reset screen
 mov dx,battles
 mov ah,0x09
 int 0x21
@@ -22,7 +20,7 @@ mov [es:di],al
 mov ah,0x01 ; Check if key touched
 int 0x16   ; Check if key touched
 jz parta  ; if not we start allover again
-mov ax,0x0003 ; reset screen
+xor ax,ax ; reset screen
 int 0x10 ; reset screen
 mov dx,t2step
 mov ah,0x09
