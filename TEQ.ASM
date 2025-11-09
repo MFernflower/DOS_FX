@@ -62,7 +62,7 @@ mov ah,0x09
 int 0x21
 xor ax,ax
 int 0x16
-mov ax,0x0003
+mov al,0x03
 int 0x10
 int 0x20
 
@@ -78,5 +78,6 @@ y dd ?
 i dw ?
 
 exit_text db 'BEER AND TEQUILA FOREVER - KEY TO GO ON',0x21,0x24
+
 
 
