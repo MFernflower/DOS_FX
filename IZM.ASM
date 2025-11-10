@@ -17,7 +17,7 @@ in al, 0x60
 dec ax
 jnz main_loop
     
-mov ax, 0x0003       ; clear screen 
+mov al, 0x03       ; clear screen 
 int 0x10             ; Call BIOS video interrupt
 mov dx, text         ; Load address of exit text
 mov ah, 0x09         ; Print string function
