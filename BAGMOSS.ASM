@@ -15,14 +15,13 @@
     cmp di, bx
     jne draw_loop
 
-    xor ah, ah
+    xor ax, ax
     int 0x16
 
     erase_loop:
     std
     mov cx,0xefff
     loop $ 
-    xor ax,ax
     stosw
     xor bx, bx
     cmp di, bx
