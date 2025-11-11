@@ -12,10 +12,8 @@
     xor ax, cx
     stosw
     loop draw_loop
-    
-    ; Wait for a key press before exiting
+
     xor ax, ax
     int 0x16
-    mov ax, 0x0003
     int 0x10 
     int 0x20
