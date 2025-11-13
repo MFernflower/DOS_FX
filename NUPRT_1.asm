@@ -4,10 +4,10 @@ ORG 0x100
 PUSH WORD 0x0B800
 POP ES
 ABC:
-MOV DX,0x40
-INSW
-MOV DX,0x41
-INSW
+in ax, 0x40
+stosw
+in ax, 0x41
+stosw
 in al,0x60
 dec ax
 jnz ABC
