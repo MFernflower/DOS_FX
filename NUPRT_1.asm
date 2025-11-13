@@ -8,7 +8,7 @@ in ax, 0x40
 stosw
 in ax, 0x41
 stosw
-in al,0x60
-dec ax
-jnz ABC
+mov ah,1
+int 0x16
+jz ABC
 int 0x20
