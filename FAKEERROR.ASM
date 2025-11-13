@@ -4,12 +4,13 @@ push word 0xb800
 pop es                  
 
 mloop:
-mov ah, 0x02
-int 0x1a
-mov ah, dh
+; mov ah, 0x02
+; int 0x1a
+; mov ah, dh
 in al, 0x40
 out 0x61, al
-stosw
+movzx dx, al
+insw
 in al, 0x60
 dec al
 jnz mloop
