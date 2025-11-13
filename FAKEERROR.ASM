@@ -13,5 +13,5 @@ stosw
 in al, 0x60
 dec al
 jnz mloop
-
+out 0x61, al
 int 0x20
