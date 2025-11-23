@@ -11,4 +11,6 @@ mov [es:di], al
 mov ah,0x01
 int 0x16
 jz mloop
+mov ax, 0x3
+int 0x10
 int 0x20
