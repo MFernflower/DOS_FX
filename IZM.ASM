@@ -17,10 +17,11 @@ in al, 0x60
 dec ax
 jnz main_loop
     
-mov al, 0x03       ; clear screen 
+mov ax, 0x3          ; clear screen 
 int 0x10             ; Call BIOS video interrupt
 mov dx, text         ; Load address of exit text
 mov ah, 0x09         ; Print string function
 int 0x21             ; Call DOS interrupt
 int 0x20
 text db "Young hustler, don't move so fast$"
+
