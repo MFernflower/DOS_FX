@@ -11,6 +11,7 @@ mov ah, 0x02
 int 0x1a
 mov ah, dh
 in al, 0x41
+neg ax
 stosw
 ; out 0x61, al
 in al, 0x60
@@ -19,5 +20,6 @@ jnz mloop
 mov ax, 0x3
 int 0x10
 int 0x20
+
 
 
