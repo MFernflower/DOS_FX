@@ -1,9 +1,9 @@
 use16
 org 0x100
 
-mov ax, 0x5         
+mov ax, 0x11 ; werid greyscale VGA mode          
 int 0x10                
-push word 0xa000
+push word 0xA000
 pop es                  
 
 mloop:
@@ -18,5 +18,6 @@ jnz mloop
 mov ax, 0x3
 int 0x10
 int 0x20
+
 
 
