@@ -1,7 +1,7 @@
 use16
 org 0x100
 
-mov ax, 0x05          
+mov ax, 0x0005          
 int 0x10                
 push word 0xa000
 pop es                  
@@ -18,3 +18,4 @@ jnz mloop
 mov ax, 0x3
 int 0x10
 int 0x20
+
