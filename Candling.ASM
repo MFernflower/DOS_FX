@@ -6,18 +6,15 @@ int 0x10
 push word 0xA000
 pop es                  
 
-mloop:
+parta:
 mov ah, 0x02
 int 0x1a
 mov ah, dh
 in al, 0x41
 stosw
-in al, 0x60
-dec al
-jnz mloop
+mov ah, 0x01 ; Check if key touched
+int 0x16   ; Check if key touched
+jz parta  ; if not we start allover again
 mov ax, 0x3
 int 0x10
 int 0x20
-
-
-
