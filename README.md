@@ -2,7 +2,7 @@ A bunch of flat assembler (FASM) programs inspired by various MSDOS malwares and
 
 All of these programs are completely benign - the ones with a P_ in the file name hang MSDOS in a way that you will need to power-cycle to return to normal - for the love of all that is retro please do not use those programs on machines with vintage mechanical hard drives as those do not enjoy random power-cycling! 
 
-You can compile this in either freedos (via the batch file) or linux (using make)
+You can compile this in either freedos (with the batch file, check if you have the right packages installed first!) or linux (using make + fasm)
 
 Some code in places is quite messy but everything does work!
 
