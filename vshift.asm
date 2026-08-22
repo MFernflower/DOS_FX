@@ -24,10 +24,8 @@ xor bx, bx
     inc byte [es:di]
     and byte [es:di], 0x7F
 
-.next:
+.next: ; Advance without trashing everything
     add di, 2
-
-    ; Advance without trashing everything
     inc bl
     cmp bl, 0x10
     jb .no_wrap
