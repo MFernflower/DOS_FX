@@ -6,9 +6,9 @@ mov ax, 0xB800
 mov es, ax
 xor di, di
 mov cx, 2000
-xor bx, bx
+mov bx, cx
 
-.loop:
+.mloop:
     ; Skip empty space characters entirely
     mov al, [es:di]
     cmp al, 0x20
@@ -19,10 +19,6 @@ xor bx, bx
     and al, 0xF0
     or al, bl
     mov [es:di + 1], al
-
-    ; Increment character & mask to prevent 0x80+ (black blocks)
-    inc byte [es:di]
-    and byte [es:di], 0x7F
 
 .next: ; Advance without trashing everything
     add di, 2
@@ -35,11 +31,11 @@ xor bx, bx
     ; Delay
     push cx
     mov cx, 0xFFFE
-.dly:
-    loop .dly
+.hold:
+    loop .hold
     pop cx
 
     dec cx
-    jnz .loop
+    jnz .mloop
 
     int 0x20
